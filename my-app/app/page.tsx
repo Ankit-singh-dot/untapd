@@ -140,10 +140,10 @@ export default function Home() {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="bg-foreground/5 border border-foreground/10 p-8 rounded-[2rem] flex items-center hover:border-brand/50 transition-colors group"
+                className="bg-foreground/5 border border-foreground/10 p-6 md:p-8 rounded-[2rem] flex items-center hover:border-brand/50 transition-colors group"
               >
-                <CheckCircle2 className="w-8 h-8 text-brand mr-4 flex-shrink-0 group-hover:scale-110 transition-transform" />
-                <span className="text-lg font-bold">{outcome}</span>
+                <CheckCircle2 className="w-6 h-6 md:w-8 md:h-8 text-brand mr-3 md:mr-4 flex-shrink-0 group-hover:scale-110 transition-transform" />
+                <span className="text-base md:text-lg font-bold">{outcome}</span>
               </motion.div>
             ))}
           </div>
