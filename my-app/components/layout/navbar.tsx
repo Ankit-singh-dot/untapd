@@ -13,14 +13,14 @@ function DockIcon({ children, mouseX }: { children: React.ReactNode, mouseX: Mot
     return val - bounds.x - bounds.width / 2;
   });
 
-  const widthSync = useTransform(distance, [-150, 0, 150], [50, 90, 50]);
+  const widthSync = useTransform(distance, [-150, 0, 150], [40, 70, 40]);
   const width = useSpring(widthSync, { mass: 0.1, stiffness: 200, damping: 15 });
 
   return (
     <motion.div
       ref={ref}
       style={{ width, height: width }}
-      className="flex items-center justify-center bg-white/10 rounded-full hover:bg-white/25 transition-colors backdrop-blur-md cursor-pointer border border-white/20"
+      className="flex items-center justify-center bg-white/10 rounded-full hover:bg-white/25 transition-colors backdrop-blur-md cursor-pointer border border-white/20 shrink-0"
     >
       {children}
     </motion.div>
@@ -35,7 +35,7 @@ export function Navbar() {
       initial={{ y: 100, opacity: 0, x: "-50%" }}
       animate={{ y: 0, opacity: 1, x: "-50%" }}
       transition={{ delay: 0.5, type: "spring", stiffness: 200, damping: 20 }}
-      className="fixed bottom-8 left-1/2 z-50 flex items-center gap-3 p-3 rounded-full bg-black/50 backdrop-blur-2xl border border-white/10 shadow-2xl"
+      className="fixed bottom-4 md:bottom-8 left-1/2 z-50 flex items-center gap-1 md:gap-3 p-2 md:p-3 rounded-full bg-black/50 backdrop-blur-2xl border border-white/10 shadow-2xl max-w-[95vw] overflow-x-auto no-scrollbar"
       onMouseMove={(e) => mouseX.set(e.pageX)}
       onMouseLeave={() => mouseX.set(Infinity)}
     >
