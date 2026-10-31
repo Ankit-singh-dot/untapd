@@ -2,7 +2,7 @@
 
 import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
-import { useEffect, useRef, useState } from "react";
+import { CSSProperties, useEffect, useRef, useState } from "react";
 import { filmOpportunities, filmPosters } from "@/components/home/content";
 import { RiseLine } from "@/components/shared/horizon-stage";
 import { Accent } from "@/components/shared/page-cta";
@@ -12,16 +12,16 @@ const benefits = [
   { title: "Higher recall", body: "Higher brand recall and credibility through context." },
   { title: "Scale", body: "Access to large, highly engaged entertainment audiences." },
   { title: "Emotion", body: "Stronger emotional and cultural connection." },
-  { title: "Amplification", image: "/images/extracted/page_29_img_1.jpeg", body: "Extended visibility via digital & PR amplification." },
+  { title: "Amplification", ratio: "1/1", portrait: true, focus: "50% 50%", image: "/images/extracted/page_29_img_1.jpeg", body: "Extended visibility via digital & PR amplification." },
 ];
 
 const steps = [
-  { title: "Brand Assessment", image: "/images/in-film/opp_1.png", body: "We begin by evaluating your brand’s core values, target audience, and overarching business objectives to identify the right cultural moments." },
-  { title: "Property Identification", image: "/images/in-film/opp_2.png", body: "Using our network and data, we match your brand with the perfect upcoming entertainment property, be it a blockbuster film, OTT series, or music video." },
-  { title: "Negotiation", image: "/images/in-film/work_1.png", body: "We secure optimal placement and deal terms, ensuring your investment buys meaningful screen time rather than fleeting background exposure." },
-  { title: "Integration", image: "/images/extracted/page_29_img_3.png", body: "Our creative team works with directors and writers to seamlessly weave the brand into the narrative, making it feel organic and crucial to the story." },
-  { title: "Amplification", image: "/images/extracted/page_29_img_1.jpeg", body: "We don’t stop at the screen. We build 360-degree digital, PR, and social campaigns around the integration to extend reach and maximize buzz." },
-  { title: "Measurement", image: "/images/extracted/page_28_img_1.jpeg", body: "Post-release, we track brand recall, audience sentiment, reach, and tangible ROI to prove the impact of the integration on your bottom line." },
+  { title: "Brand Assessment", ratio: "4/5", portrait: true, focus: "50% 30%", image: "/images/in-film/opp_1.png", body: "We begin by evaluating your brand’s core values, target audience, and overarching business objectives to identify the right cultural moments." },
+  { title: "Property Identification", ratio: "479/559", portrait: true, focus: "50% 30%", image: "/images/in-film/opp_2.png", body: "Using our network and data, we match your brand with the perfect upcoming entertainment property, be it a blockbuster film, OTT series, or music video." },
+  { title: "Negotiation", ratio: "928/438", portrait: false, focus: "50% 25%", image: "/images/in-film/work_1.png", body: "We secure optimal placement and deal terms, ensuring your investment buys meaningful screen time rather than fleeting background exposure." },
+  { title: "Integration", ratio: "772/592", portrait: false, focus: "50% 25%", image: "/images/extracted/page_29_img_3.png", body: "Our creative team works with directors and writers to seamlessly weave the brand into the narrative, making it feel organic and crucial to the story." },
+  { title: "Amplification", ratio: "1/1", portrait: true, focus: "50% 50%", image: "/images/extracted/page_29_img_1.jpeg", body: "We don’t stop at the screen. We build 360-degree digital, PR, and social campaigns around the integration to extend reach and maximize buzz." },
+  { title: "Measurement", ratio: "16/9", portrait: false, focus: "50% 30%", image: "/images/extracted/page_28_img_1.jpeg", body: "Post-release, we track brand recall, audience sentiment, reach, and tangible ROI to prove the impact of the integration on your bottom line." },
 ];
 
 const onScreen = [
@@ -137,8 +137,8 @@ function Slate() {
 
 /**
  * The process as end credits: the text scrolls past while the work fills the screen behind it, changing
- * with each step. Each image sits sharp at its own size over a blurred copy of itself, so it fills
- * the frame without being stretched past its resolution.
+ * with each step. Images that match the screen's shape fill it; the others fade into a blurred copy of
+ * themselves, so nothing gets stretched past its resolution or shows a hard edge.
  */
 function Credits() {
   const [active, setActive] = useState(0);
@@ -157,18 +157,29 @@ function Credits() {
 
   return (
     <section data-nav="dark" className="relative bg-black text-white">
-      <div aria-hidden className="sticky top-0 -mb-[100svh] h-svh overflow-clip">
-        {steps.map((step, i) => (
-          <div key={step.image} className={`absolute inset-0 transition-opacity duration-[1.2s] ease-out ${active === i ? "opacity-100" : "opacity-0"}`}>
-            <Image src={step.image} alt="" fill sizes="40vw" className="scale-110 object-cover blur-2xl brightness-50 saturate-150" />
-            <div className={`absolute inset-x-[6vw] inset-y-[9svh] transition-transform duration-[2.4s] ease-expo motion-reduce:transition-none ${active === i ? "scale-100" : "scale-[1.07]"}`}>
-              <Image src={step.image} alt="" fill sizes="(min-width: 768px) 70vw, 100vw" className="object-contain brightness-[0.62]" />
+      <div aria-hidden className="absolute inset-0">
+        <div className="sticky top-0 h-svh overflow-clip">
+          {steps.map((step, i) => (
+            <div key={step.image} className={`absolute inset-0 transition-opacity duration-[1.2s] ease-out ${active === i ? "opacity-100" : "opacity-0"}`}>
+              <Image src={step.image} alt="" fill sizes="40vw" className="scale-110 object-cover blur-2xl brightness-75 saturate-150" />
+              <div
+                className={`absolute inset-0 motion-reduce:transition-none ${
+                  active === i ? "scale-[1.06] transition-transform duration-[10s] ease-linear" : "scale-100 transition-transform delay-[1.2s] duration-0"
+                }`}
+              >
+                <div className={step.portrait ? "film-portrait" : "film-landscape"} style={{ "--ratio": step.ratio } as CSSProperties}>
+                  <Image src={step.image} alt="" fill sizes={step.portrait ? "(min-width: 768px) 60vw, 100vw" : "100vw"} className="object-cover" style={{ objectPosition: step.focus }} />
+                </div>
+              </div>
             </div>
-          </div>
-        ))}
-        <div className="absolute inset-0 bg-black/45" />
+          ))}
+          {/* Dark behind the words, open at the edges where the images do their work. */}
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_72%_52%_at_center,rgba(0,0,0,0.8),rgba(0,0,0,0.58)_55%,rgba(0,0,0,0.12))]" />
+        </div>
       </div>
-      <div aria-hidden className="pointer-events-none sticky top-0 z-20 -mb-[100svh] h-svh bg-[linear-gradient(#000,transparent_20%,transparent_80%,#000)]" />
+      <div aria-hidden className="pointer-events-none absolute inset-0 z-20">
+        <div className="sticky top-0 h-svh bg-[linear-gradient(#000,transparent_14%,transparent_86%,#000)]" />
+      </div>
 
       <ol className="relative z-10 mx-auto max-w-3xl px-5 text-center [text-shadow:0_2px_30px_rgba(0,0,0,0.75)]">
         <li data-step={0} className="flex min-h-svh flex-col items-center justify-center">

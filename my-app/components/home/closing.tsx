@@ -1,6 +1,6 @@
 "use client";
 
-import { Container, Eyebrow, Lines, MagneticButton, Reveal } from "@/components/shared/primitives";
+import { Container, Eyebrow, Lines, PillButton, Reveal } from "@/components/shared/primitives";
 
 export function Closing() {
   return (
@@ -31,7 +31,7 @@ export function Closing() {
                 Stop guessing. It&rsquo;s just the tip of the iceberg. Let&rsquo;s connect over a call and show you how we can help make
                 your brand one of the best in your industry.
               </p>
-              <MagneticButton href="#contact">Let&rsquo;s build together</MagneticButton>
+              <PillButton href="#contact">Let&rsquo;s build together</PillButton>
             </Reveal>
           </div>
         </div>

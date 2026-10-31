@@ -84,6 +84,37 @@ h1, h2, h3, h4, h5, h6 {
   to { opacity: 1; transform: translateY(0); }
 }
 
+/* In-Film "How it works" backgrounds. Portrait images fill a phone and feather at the sides on wider
+   screens; landscape images fill wider screens and feather top and bottom on a phone. */
+.film-portrait,
+.film-landscape {
+  position: absolute;
+  inset: 0;
+}
+
+.film-landscape {
+  inset: 50% 0 auto;
+  translate: 0 -50%;
+  aspect-ratio: var(--ratio);
+  mask-image: linear-gradient(transparent, #000 16%, #000 84%, transparent);
+}
+
+@media (min-width: 768px) {
+  .film-portrait {
+    inset: 0 auto 0 50%;
+    translate: -50% 0;
+    aspect-ratio: var(--ratio);
+    mask-image: linear-gradient(90deg, transparent, #000 18%, #000 82%, transparent);
+  }
+
+  .film-landscape {
+    inset: 0;
+    translate: none;
+    aspect-ratio: auto;
+    mask-image: none;
+  }
+}
+
 .hero-strike {
   animation: hero-strike 1.1s cubic-bezier(0.76, 0, 0.24, 1) 1.1s both;
 }
