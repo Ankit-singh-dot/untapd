@@ -17,9 +17,9 @@ export default function Home() {
       <Manifesto />
       <Shift />
       <Pillars />
+      <Brands />
       <Proof />
       <Outcomes />
-      <Brands />
       <People />
       <Ecosystem />
       <Closing />
