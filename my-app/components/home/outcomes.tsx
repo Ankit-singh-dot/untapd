@@ -11,7 +11,7 @@ export function Outcomes() {
       <Container className="grid gap-10 lg:grid-cols-12 lg:gap-6">
         <div className="lg:col-span-4">
           <div className="lg:sticky lg:top-28">
-            <Eyebrow index="05" className="mb-5 text-brand">
+            <Eyebrow index="06" className="mb-5 text-brand">
               Outcomes
             </Eyebrow>
             <h2 className="font-serif text-[clamp(2.5rem,4.6vw,5rem)] font-normal italic leading-none tracking-[-0.02em]">We help brands</h2>
