@@ -21,7 +21,7 @@ const ledger = ["Channel Allocation", "Performance Tracking", "Agency & Vendor C
 
 function Hero() {
   return (
-    <HorizonStage label="vCMO" height="h-[190svh]" backdrop={<HeroField className="absolute inset-0 size-full" />}>
+    <HorizonStage label="vCMO" backdrop={<HeroField className="absolute inset-0 size-full" />}>
       {() => (
         <Container className="flex flex-1 flex-col justify-between">
           <p className="hero-fade hidden text-sm md:block [@media(max-height:760px)]:hidden" style={{ animationDelay: "0.9s" }}>
@@ -55,7 +55,7 @@ function Hero() {
 
 function Reasons() {
   return (
-    <section data-nav="light" className="bg-paper pb-24 pt-[12vh] text-ink md:pb-40">
+    <section data-nav="light" className="bg-paper pb-24 pt-20 text-ink md:pb-40 md:pt-28">
       <Container>
         <Eyebrow index="01" className="mb-8 text-brand md:mb-12">
           Introducing vCMO
