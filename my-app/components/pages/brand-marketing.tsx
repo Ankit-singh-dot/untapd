@@ -257,9 +257,7 @@ export function BrandMarketingPage() {
       <Hero />
       <Statement />
       <SystemStory />
-      <div className="bg-paper pt-24 md:pt-40">
-        <Brands index="03" />
-      </div>
+      <Brands index="03" />
       <Result />
       <PageCta
         over="bg-ink"
