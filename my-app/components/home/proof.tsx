@@ -82,7 +82,7 @@ export function Proof() {
         >
           <div className="flex shrink-0 flex-col justify-between gap-10 pb-6 lg:h-full lg:w-[min(46vw,720px)] lg:pr-10">
             <div>
-              <Eyebrow index="04" className="mb-6 text-brand">
+              <Eyebrow index="05" className="mb-6 text-brand">
                 Proof
               </Eyebrow>
               <h2 className="font-display text-[clamp(2.75rem,7vw,8rem)] font-medium leading-[0.94] tracking-[-0.045em]">
