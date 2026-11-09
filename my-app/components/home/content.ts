@@ -141,10 +141,40 @@ export const outcomes = [
   "Optimize marketing budgets",
 ];
 
-// [file id, width, height] of each mask in /images/brands/mono
-export const brandLogos: [number, number, number][][] = [
-  [[1, 258, 160], [3, 393, 160], [21, 689, 160], [27, 917, 160], [28, 323, 79], [7, 481, 160], [14, 161, 160], [10, 779, 160]],
-  [[22, 605, 160], [11, 150, 53], [15, 697, 160], [18, 473, 160], [24, 627, 122], [30, 518, 160], [25, 272, 116], [6, 444, 154]],
+/**
+ * The brand roster, in grid order (seven across on desktop, mixed so wide wordmarks and square marks alternate).
+ * Each slug has an ink silhouette at /images/brands/roster/{slug}.png and the original at {slug}-color.png;
+ * width and height are the silhouette's pixel size, used to balance how much space each logo takes.
+ */
+export const brandRoster: { slug: string; name: string; width: number; height: number }[] = [
+  { slug: "serumique", name: "Serumique", width: 896, height: 192 },
+  { slug: "teapigs", name: "teapigs", width: 824, height: 188 },
+  { slug: "lse", name: "London School of Economics", width: 889, height: 304 },
+  { slug: "gagoo", name: "Gagoo", width: 427, height: 419 },
+  { slug: "john-jacobs", name: "John Jacobs", width: 1064, height: 106 },
+  { slug: "tender-fresh", name: "Tender Fresh", width: 520, height: 519 },
+  { slug: "supervity", name: "Supervity", width: 880, height: 230 },
+  { slug: "kala-emporium", name: "Kala Emporium", width: 737, height: 182 },
+  { slug: "yalla-haji", name: "Yalla Haji", width: 395, height: 391 },
+  { slug: "mantraa", name: "Mantraa", width: 1010, height: 171 },
+  { slug: "grubwala", name: "Grubwala", width: 505, height: 356 },
+  { slug: "phaze-ai", name: "PhazeAI", width: 661, height: 145 },
+  { slug: "ivora", name: "Ivora", width: 671, height: 227 },
+  { slug: "the-founders", name: "The Founders", width: 334, height: 306 },
+  { slug: "tata-raasa", name: "Tata Raasa", width: 673, height: 232 },
+  { slug: "dashfit", name: "Dashfit", width: 952, height: 237 },
+  { slug: "sattva", name: "Sattva", width: 603, height: 333 },
+  { slug: "only", name: "ONLY", width: 474, height: 131 },
+  { slug: "naulakha-naturals", name: "Naulakha Naturals", width: 881, height: 376 },
+  { slug: "kitdor", name: "Kitdor", width: 816, height: 193 },
+  { slug: "moonglow", name: "Moonglow", width: 663, height: 267 },
+  { slug: "ghost-kitchens", name: "Ghost Kitchens", width: 579, height: 229 },
+  { slug: "tanique", name: "Tanique", width: 896, height: 172 },
+  { slug: "nova", name: "Nova by Bridgeye", width: 676, height: 220 },
+  { slug: "teabox", name: "Teabox", width: 757, height: 194 },
+  { slug: "tripy-package", name: "Tripy Package", width: 721, height: 292 },
+  { slug: "kerrato", name: "Kerrato", width: 812, height: 233 },
+  { slug: "poshan", name: "Poshan", width: 621, height: 218 },
 ];
 
 export const team = [
@@ -163,6 +193,16 @@ export const ecosystem = [
   "Investor Access",
   "Incubation Network Access",
   "First Access to In-Film Opportunities",
+];
+
+/** The same six, with the short label used on the orbit and a one-line note (shared wording with /ecosystem). */
+export const ecosystemPerks = [
+  { title: "Strategic Advisor Sessions", short: "Advisor Sessions", sub: "Direct access to industry veterans." },
+  { title: "Strategic Partnerships", short: "Partnerships", sub: "Cross-brand collaboration opportunities." },
+  { title: "Founder Meetups", short: "Founder Meetups", sub: "Exclusive networking events." },
+  { title: "Investor Access", short: "Investor Access", sub: "Warm introductions to capital." },
+  { title: "Incubation Network Access", short: "Incubation Network", sub: "Resources for early-stage brands." },
+  { title: "First Access to In-Film Opportunities", short: "In-Film", sub: "First access to entertainment slots." },
 ];
 
 export const advisors = [
