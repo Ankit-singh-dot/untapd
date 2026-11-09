@@ -27,7 +27,7 @@ function Counter({ value, suffix }: { value: number; suffix: string }) {
 
 export function Manifesto() {
   return (
-    <section id="about" data-nav="light" className="relative bg-paper pb-24 pt-[12vh] text-ink md:pb-40">
+    <section id="about" data-nav="light" className="relative bg-paper pb-24 pt-20 text-ink md:pb-40 md:pt-32">
       <Container>
         <Eyebrow index="01" className="mb-8 text-brand md:mb-12">
           About Untapd
