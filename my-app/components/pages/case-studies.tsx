@@ -143,7 +143,7 @@ function MetricTicker() {
 
 function Hero() {
   return (
-    <HorizonStage label="Case studies" height="h-[190svh]" stageClassName="bg-ink">
+    <HorizonStage label="Case studies" stageClassName="bg-ink">
       {() => (
         <Container className="flex flex-1 flex-col justify-between gap-6">
           <p className="hero-fade hidden text-sm md:block [@media(max-height:760px)]:hidden" style={{ animationDelay: "0.9s" }}>
