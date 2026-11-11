@@ -54,8 +54,8 @@ function Node({ i, step, spin, active }: { i: number; step: MotionValue<number>;
   const { angle, radius } = spots[i];
   const arrive = useTransform(step, [i, i + 0.75], [0, 1]);
   const ease = useTransform(arrive, (a) => 1 - Math.pow(1 - a, 3));
-  const left = useTransform(ease, (a) => `${50 + Math.cos(angle) * radius * (1 + (1 - a) * 1.1)}%`);
-  const top = useTransform(ease, (a) => `${50 + Math.sin(angle) * radius * (1 + (1 - a) * 1.1)}%`);
+  const left = useTransform(ease, (a) => `${50 + Math.cos(angle) * radius * (1 + (1 - a) * 0.6)}%`);
+  const top = useTransform(ease, (a) => `${50 + Math.sin(angle) * radius * (1 + (1 - a) * 0.6)}%`);
   const opacity = useTransform(arrive, [0, 0.35], [0, 1]);
   const upright = useTransform(spin, (r) => -r);
   // The label opens towards the centre, so it never runs off the edge of the stage.
@@ -150,8 +150,9 @@ function Constellation() {
   const [done, setDone] = useState(false);
 
   useMotionValueEvent(step, "change", (s) => {
-    setActive(Math.min(COUNT - 1, Math.max(0, Math.floor(s))));
-    setDone(s >= COUNT);
+    // A benefit becomes the headline as it lands, not while it is still flying in.
+    setActive(Math.min(COUNT - 1, Math.max(0, Math.floor(s - 0.6))));
+    setDone(s >= COUNT + 0.15);
   });
 
   const perk = ecosystemPerks[active];
