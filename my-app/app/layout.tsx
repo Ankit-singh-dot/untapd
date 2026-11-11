@@ -24,6 +24,15 @@ const newsreader = Newsreader({
 export const metadata: Metadata = {
   title: "Untapd | Think Beyond.",
   description: "Strategic Marketing Leadership · Brand Building · Growth Systems",
+  icons: {
+    icon: [
+      { url: "/favicon.ico" },
+      { url: "/icon.png", type: "image/png" },
+    ],
+    apple: [
+      { url: "/apple-icon.png" },
+    ],
+  },
 };
 
 export default function RootLayout({
